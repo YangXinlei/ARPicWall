@@ -51,18 +51,10 @@ void print_Matrix4(SCNMatrix4 matrix)
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    
     //1.将AR视图添加到当前视图
     [self.view addSubview:self.arSCNView];
     //2.开启AR会话（此时相机开始工作）
     [self.arSession runWithConfiguration:self.arSessionConfiguration];
-    
-    
     
     UIButton *choosePicBtn = [UIButton buttonWithType:UIButtonTypePlain];
     [choosePicBtn setTitle:@"选择照片" forState:UIControlStateNormal];
@@ -73,17 +65,21 @@ void print_Matrix4(SCNMatrix4 matrix)
     [self.view addSubview:choosePicBtn];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    
-    // 重置
-    [self.arSCNView removeFromSuperview];
-    self.arSCNView = nil;
-    self.arSession = nil;
-    self.arSessionConfiguration = nil;
-    self.planes = nil;
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
+
+//- (void)viewDidDisappear:(BOOL)animated
+//{
+//    [super viewDidDisappear:animated];
+//
+//    // 重置
+//    [self.arSCNView removeFromSuperview];
+//    self.arSCNView = nil;
+//    self.arSession = nil;
+//    self.arSessionConfiguration = nil;
+//    self.planes = nil;
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
